@@ -32,7 +32,7 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-        cc.log("Hello!");
+        // cc.log("Hello!");
     },
 
     start() {
