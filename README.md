@@ -1,2 +1,2 @@
-# hello-world
-Hello world new project template.
+# Rabbit-Session02
+Cocos-Fresher-training.
