@@ -1,0 +1,10 @@
+{
+  "homepage": "http://yanfan-hw.github.io/rabbit",
+  "private": true,
+  "scripts": {
+    "deploy": "npm run build && gh-pages -d build/web-mobile"
+  },
+  "dependencies": {
+    "gh-pages": "^3.2.3"
+  }
+}
