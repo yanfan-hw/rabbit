@@ -36,12 +36,15 @@ cc.Class({
     },
 
     start() {
+        this.DISTANCE = 100;
+        this.defaultPosition = this.node.x;
     },
 
     update(dt) {
+
         this.node.x += 1.0;
-        if (this.node.x == 400) {
-            this.node.x = -400
+        if (this.node.x - this.defaultPosition == this.DISTANCE) {
+            this.node.x = this.defaultPosition;
         }
     },
 });
