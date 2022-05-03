@@ -42,9 +42,10 @@ cc.Class({
     },
 
     update (dt) {
+        this.node.active = false;
         this.node.y += 1;
         if(this.node.y - this.defaultPosition == this.DISTANCE) {
-            cc.log("Jump down");
+            // cc.log("Jump down");
             this.node.y = -100;
         }
     },
