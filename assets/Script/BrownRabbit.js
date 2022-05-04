@@ -2,37 +2,32 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        grayRabbit: {
-            default: null,
-            type: cc.Component
-        }
+        isCompleted: false,
+        rotation: 360,
+        xPixel: 100,
+        duration: 1,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-        cc.log("Hello. I'm Brownie!");
     },
 
     start() {
-        this.DISTANCE = 100;
-        this.defaultPosition = this.node.x;
+        cc.log("Hello. I'm Brownie!");
+        this.moveRabbit();
     },
 
-    update(dt) {
-        if (this.node.x - this.defaultPosition < this.DISTANCE) {
-            this.node.x += 1;
-            this.node.angle -= 5;
-        }
-        if (this.node.x - this.defaultPosition == this.DISTANCE) {
-            this.node.angle = 0;
-            // cc.log(this.node.x);
-            // cc.log(this.grayRabbit)
-            // this.grayRabbit.node.active = true;
-        }
-    },
+    // update(dt) {
+    // },
 
+    completeAction() {
+        this.isCompleted = !this.isCompleted;
+    },
     moveRabbit() {
-
+        let moveX = cc.moveBy(this.duration, this.xPixel, 0);
+        let rotate = cc.rotateBy(this.duration, this.rotation);
+        let runMove = this.node.runAction(cc.sequence(cc.spawn(moveX, rotate), cc.callFunc(this.completeAction, this)));
+        return runMove;
     }
 });

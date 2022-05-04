@@ -2,32 +2,31 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        brownRabbit: {
-            default: null,
-            type: cc.Component
-        }
+        duration: 1,
+        xPixel: 100,
+        isCompleted: false
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-        cc.log("Hello!");
     },
 
     start() {
-        this.DISTANCE = 100;
-        this.defaultPosition = this.node.x;
+        cc.log("Hello!");
+        this.moveRabbit();
     },
 
     update(dt) {
-        this.moveRabbit();
-        if (this.node.x - this.defaultPosition == this.DISTANCE) {
-            this.brownRabbit.node.active = true;
-        }
+
+    },
+
+    completeAction() {
+        this.isCompleted = !this.isCompleted;
     },
     moveRabbit() {
-        if ((this.node.x - this.defaultPosition) < this.DISTANCE) {
-            this.node.x += 1.0;
-        }
+        let moveX = cc.moveBy(this.duration, this.xPixel, 0);
+        let runMove = this.node.runAction(cc.sequence(moveX, cc.callFunc(this.completeAction, this)));
+        return runMove;
     }
 });
